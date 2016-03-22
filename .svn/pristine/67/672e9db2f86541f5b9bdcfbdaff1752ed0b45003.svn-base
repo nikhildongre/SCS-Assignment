@@ -1,0 +1,14 @@
+package com.scs.dao;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.scs.model.ScsUser;
+
+
+public interface ScsUserDAO extends CrudRepository<ScsUser, String> {
+	
+	
+	public ScsUser findByUsername(String username);
+	public ScsUser findById(String id);
+
+}

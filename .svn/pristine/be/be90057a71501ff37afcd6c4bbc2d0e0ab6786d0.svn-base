@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Source Control System</title>
+
+    <!-- Bootstrap -->
+	<!--<script src="resources/js/pace.js"></script>-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="resources/css/bootstrap.css" rel="stylesheet">
+	<link href="resources/css/bootstrap-select.css" rel="stylesheet">
+	<link href="resources/css/scs.css" rel="stylesheet">
+	<link href="resources/css/parsley.css" rel="stylesheet">
+    <link href="resources/css/theme.css" rel="stylesheet">
+   <link href="resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="resources/css/morris.css" rel="stylesheet">
+	 <link href="resources/css/sb-admin-2.css" rel="stylesheet">
+	  <link href="resources/css/shop-homepage.css" rel="stylesheet">
+	   <link href="resources/css/timeline.css" rel="stylesheet">
+	    <link href="resources/css/bootstrap-datatables.min.css" rel="stylesheet">
+	   
+	   <style>
+	    .parsley-required
+		{
+		 margin-top:0px;
+		}
+		#example_wrapper
+		{
+			    margin-top: -40px;
+		}
+	   </style>
+	    
+	
+	<!--<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700,400|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>-->
+	<link href="resources/css/theme-loading-bar.css" rel="stylesheet" />
+	 <link href="resources/css/shop-homepage.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body >
+	<div class="container" id="container" style="display:block;padding-top:30px;">
+		<header>
+			<!-- Main comapny header -->
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			  <div class="container">
+				<div class="navbar-header">
+				  <a class="navbar-brand top-navbar-brand" href="#"><img style="margin-top:-13px;max-width:17%;" src="resources/images/icons/SCS-Logo.jpg"/> Source Control System
+				  <br/><p style="font-size: 20px; margin-left: 111px;margin-top: -35px;font: italic;color: #428bca;"><i>One step solution for your Source management</i></p></a>
+				</div>
+				<ul class="nav navbar-nav navbar-right bigger-130 hidden-xs">
+					<li><a href="#"><i class="logo"></i></a>
+					<img src="resources/images/logo.png" style="    margin-top: -15px; border-radius: 20px;opacity: .7;width: 50px;"/></li>
+					
+				</ul>
+			  </div>
+			</nav>
+		</header>
+		
+		<div class="container" > 
+		
+		
+		<div class="col-lg-12" role="navigation" style="margin-bottom: 0;background-color:#f8f8f8;border-color: #e7e7e7;" >
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="${req.requestURL}/SCS-Assignment/welcome"><img src="resources/images/home.png"/></a>
+                <span class="navbar-brand" style="color: #479AC3;  font-size: 15px;">Welcome&nbsp;&nbsp;${user.username}</span>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <!-- /.dropdown -->
+                
+                <!-- /.dropdown -->
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                         <li><a href="${req.requestURL}/SCS-Assignment/userProfile"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="${req.requestURL}/SCS-Assignment/change"><i class="fa fa-gear fa-fw"></i> Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="${req.requestURL}/SCS-Assignment/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation" style="margin-top:60px;margin-left:-15px;">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                       
+                        <li>
+                            <a href="/SCS-Assignment/welcome"><i class="fa fa-dashboard fa-fw"></i> Add user</a>
+                        </li>
+                        <!--<li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot.html">Flot Charts</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Morris.js Charts</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level 
+                        </li>-->
+                        <li>
+                            <a href="/SCS-Assignment/userDetails"><i class="fa fa-table fa-fw"></i> User Details</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/SCS-Assignment/unlockFiles"><i class="fa fa-table fa-fw"></i> Unlock Files</a>
+                        </li>
+                       
+                        
+                       
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </div>
+		
+		
+		
+		
+		
+		
+			<div class="row" style="margin-top:10px;">
+				<div class="col-lg-3" style="float:left;">
+                
+               <!-- <div class="list-group">
+                    <a href="#" class="list-group-item">Add User</a>
+                    <a href="#" class="list-group-item">Activate/De-Activate User</a>
+                  
+                </div>-->
+				</div>
+			<div class="col-lg-9" style="margin-top:10px;">
+			
+                <div class="col-lg-12" style="width:102%;">
+					<div class="formhead">
+						
+							<h1>User Details</h1>
+						
+					</div>
+				</div>
+				
+				<div class="col-lg-12">
+                <form id="userDetailsForm">
+				 <center>
+					<div class="form-group" style="padding-top:10px;width:50%;">
+					 <!--  <select  class="col-lg-9 selectpicker" data-live-search="true" data-live-search-style="begins" title="Please select a Url to continue ..." style="width:400px;">
+						<option>URL 1</option>
+						<option>URL 2</option>
+						<option>URL 3</option>
+						<option>URl 4</option>
+						<option>URL 4</option>
+					  </select> -->
+					  <h>please select a project : </h>
+					  <select id="projectUrl">
+						
+					</select> 
+					</div>
+					</center>
+				</form>
+				</div>
+				<div class="col-lg-12" id="userDetailTableDiv" style="display : none">
+					<table id="userDetailTable" class="table table-striped table-bordered" cellspacing="0" width="100%" style="border:1px solid #7CA5AF;">
+						<thead>
+							<tr>
+								<th>Username </th>
+								<th>Status</th>
+								<th>Activate/De-Activate</th>
+								
+							</tr>
+							<tbody></tbody>
+						</thead>
+						</table>
+				</div>
+				
+            </div>
+			 </div><!-- Row Div-->
+		</div><!-- container Div-->
+			
+
+			
+		
+		<footer>
+			<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="min-height: 5%;height: 6%;">
+			  <div class="container text-center">
+				<div class="footer-content">
+				  Copyright @ Persistent System Ltd. All rights reserved. </a>
+				</div>
+			  </div><!-- /.container-fluid -->
+			</nav>
+		</footer>
+	</div><!-- main container Div-->
+
+	<script src="resources/js/jquery.min.js"></script>
+	 
+	<script src="resources/js/bootstrap.min.js"></script>
+	<!--<script src="resources/js/jquery.backstretch.min.js"></script>-->
+	<script src="resources/js/parsley.js"></script>
+	
+	<script src="resources/js/bootstrap-select.min.js"></script>
+	<script src="resources/js/metisMenu.js"></script>
+	<script src="resources/js/raphael.js"></script>
+	
+	<script src="resources/js/sb-admin-2.js"></script>
+	<script src="resources/js/jquery.dataTables.min.js"></script>
+	<script src="resources/js/dataTables.bootstrap.min.js"></script>
+	<script src="resources/js/projectDetails.js"></script>
+	
+
+	<!--<script>
+		Pace.on('hide', function(){
+		  $("#container").fadeIn('1000');
+		  $.backstretch([
+				"resources/images/image2.png",
+				
+			]);
+		});
+		
+	</script>-->
+	<!--<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-53918379-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>-->
+	<script>
+	  $('#loginform').parsley();
+	  function submit()
+	  {
+	   $('#loginform').submit();
+	  }
+	</script>
+	<script>
+  $(document).ready(function () {
+    var mySelect = $('#first-disabled2');
+
+    $('#special').on('click', function () {
+      mySelect.find('option:selected').prop('disabled', true);
+      mySelect.selectpicker('refresh');
+    });
+
+    $('#special2').on('click', function () {
+      mySelect.find('option:disabled').prop('disabled', false);
+      mySelect.selectpicker('refresh');
+    });
+
+    $('#basic2').selectpicker({
+      liveSearch: true,
+      maxOptions: 1
+    });
+	
+	$('#example').DataTable();
+  });
+</script>
+  </body>
+</html>

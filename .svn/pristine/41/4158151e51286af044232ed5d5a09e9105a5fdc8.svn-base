@@ -1,0 +1,119 @@
+package com.scs.service.impl;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.scs.dao.UserDAO;
+import com.scs.dao.UserProjectDao;
+import com.scs.model.UserAuthorisedProjects;
+import com.scs.model.UserProjects;
+import com.scs.model.UserProjectsDetails;
+import com.scs.model.UserRole;
+
+/**
+ * This Service is used to serve to user related query 
+ * Author : Nikhil
+ */
+
+@Service(value = "userServiceDetails")
+public class UserServiceDetails implements UserDetailsService {
+
+	@Id
+	String id;
+	String name;
+	String password;
+	String email;
+	boolean isActive;
+	List<UserRole> role;
+	String createdBy;
+	Date createdDate;
+	String modifiedBy;
+	Date modifiedDate;
+	@Resource
+	private UserDAO userRepositoryDao;
+	@Resource
+	private UserProjectDao userProjectDao;
+	 
+	@Autowired
+	public MongoTemplate mongoTemplate;
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+
+	private org.springframework.security.core.userdetails.User userdetails;
+
+	@Override
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+		boolean enabled = true;
+		boolean accountNonExpired = true;
+		boolean credentialsNonExpired = true;
+		boolean accountNonLocked = true;
+		com.scs.model.User user = getUserDetail(username);
+
+		userdetails = new User(user.getUsername(), user.getPassword(), enabled,
+				accountNonExpired, credentialsNonExpired, accountNonLocked,
+				getAuthorities(user.getRole()));
+		return userdetails;
+	}
+
+	public List<GrantedAuthority> getAuthorities(String role) {
+		List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
+		if ("ADMIN".equalsIgnoreCase(role)) {
+			authList.add(new SimpleGrantedAuthority("ADMIN"));
+
+		} else {
+			authList.add(new SimpleGrantedAuthority("ROLE_CAMPAIGN"));
+		}
+		System.out.println(authList);
+		return authList;
+	}
+
+	public com.scs.model.User getUserDetail(String username) {
+		com.scs.model.User user = userRepositoryDao.findByUsername(username);
+		return user;
+	}
+	public com.scs.model.User save(com.scs.model.User user) {
+		com.scs.model.User scsUser = userRepositoryDao.save(user);
+		return user;
+	}
+	public List<UserProjectsDetails> getProjectNames() {
+		List<UserProjectsDetails> projectList = new ArrayList<UserProjectsDetails>();
+		List<UserProjects> userProjects = userProjectDao.findAll();
+		for(UserProjects userProject : userProjects){
+			UserProjectsDetails projectDetail = new UserProjectsDetails();
+			projectDetail.setId(userProject.getId());
+			projectDetail.setPath(userProject.getPath());
+			projectDetail.setProjectName(userProject.getProjectName());
+			projectList.add(projectDetail);
+		}
+		return projectList;
+	}
+	
+	public List<UserProjectsDetails> getUserProjects(String username) {
+		List<UserProjectsDetails> projectList = new ArrayList<UserProjectsDetails>();
+		com.scs.model.User userProjects = userRepositoryDao.findByUsername(username);
+		for(UserAuthorisedProjects userProject : userProjects.getUserAuthorisedProjects()){
+			UserProjectsDetails projectDetail = new UserProjectsDetails();
+			projectDetail.setId(userProject.getProject());
+			projectDetail.setPath(userProject.getServerUrl());
+			projectDetail.setProjectName(userProject.getProject());
+			projectList.add(projectDetail);
+		}
+		return projectList;
+	}
+}

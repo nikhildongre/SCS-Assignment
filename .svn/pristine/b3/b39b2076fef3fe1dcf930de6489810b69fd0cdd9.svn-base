@@ -1,0 +1,113 @@
+package com.scs.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.scs.model.Node;
+import com.scs.model.UserProjectsDetails;
+import com.scs.service.impl.FileServiceImpl;
+import com.scs.service.impl.UserServiceDetails;
+
+@Controller
+public class FileController {
+
+	@Autowired
+	FileServiceImpl fileServiceImpl;
+	
+	@Autowired
+	UserServiceDetails userServiceDetails;
+
+	@RequestMapping(value = "/getProjects" ,method = RequestMethod.GET , produces = "application/json")
+	@ResponseBody
+	public List<UserProjectsDetails> getProjects() {
+		List<UserProjectsDetails> projectList = null;
+		projectList = userServiceDetails.getProjectNames();
+		return projectList;
+	}
+	
+	@RequestMapping(value = "/getUserProjects" ,method = RequestMethod.GET , produces = "application/json")
+	@ResponseBody
+	public List<UserProjectsDetails> getUserProjects() {
+		List<UserProjectsDetails> projectList = null;
+		projectList = userServiceDetails.getProjectNames();
+		return projectList;
+	}
+
+	@RequestMapping(value = "/getProjectRoot", method = RequestMethod.GET )
+	@ResponseBody
+	public Node getProjectRoot(@RequestParam("projectName") String projectName) {
+		Node file = fileServiceImpl.getRoot(projectName); // root
+		return file;
+	}
+
+	@RequestMapping(value = "/getProjectChilds", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Node> getProjectChilds(@RequestParam("id") String parentNodeId) {
+		List<Node> files = fileServiceImpl.getChildFilesById(parentNodeId); // root
+
+		return files;
+	}
+
+	@RequestMapping(value = "/createFile", method = RequestMethod.GET)
+	@ResponseBody
+	public Node createFile(@RequestParam("type") String fileType,
+			@RequestParam("id") String parentId,
+			@RequestParam("text") String fileName) {
+		Node file = fileServiceImpl.createFile(fileType, parentId, fileName);
+		return file;
+	}
+
+	@RequestMapping(value = "/deleteFile", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<?> deleteFile(@RequestParam("id") String fileId) {
+		try {
+			fileServiceImpl.deleteFile(fileId);
+			return new ResponseEntity<>("Success", HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(),
+					HttpStatus.EXPECTATION_FAILED);
+		}
+
+	}
+
+	@RequestMapping(value = "/renameFile", method = RequestMethod.GET)
+	@ResponseBody
+	public Node renameFile(@RequestParam("id") String fileId,
+			@RequestParam("text") String fileName) {
+		Node file = fileServiceImpl.renameFile(fileId, fileName);
+		return file;
+	}
+
+	@RequestMapping(value = "/commitFile", method = RequestMethod.GET)
+	@ResponseBody
+	public Node commitFile(HttpServletRequest request,
+			HttpServletResponse response) {
+		Node file = null;
+		return file;
+	}
+
+	@RequestMapping(value = "/lockFile", method = RequestMethod.GET)
+	@ResponseBody
+	public Node lockFile(@RequestParam("id") String fileId) {
+		Node file = null;
+		return file;
+	}
+
+	@RequestMapping(value = "/unlockFile", method = RequestMethod.GET)
+	@ResponseBody
+	public Node unlockFile(@RequestParam("id") String fileId) {
+		Node file = null;
+		return file;
+	}
+}

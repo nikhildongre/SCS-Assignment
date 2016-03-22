@@ -1,0 +1,83 @@
+package com.scs.service;
+
+import java.util.Properties;
+import java.util.Random;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+
+
+
+/** This class provides services of 
+ * sending mail to user after successful 
+ * registration and also generates password.
+ * 
+ * Authors : Akash Gaikwad and Vikas Singh
+ */
+
+public class MailService {
+
+	
+	
+	public void sendMail(String username , String emailId, String password)
+	{
+	      String to = emailId;
+	      String from = "SCS-Admin";
+	      String host = "hj-relay.persistent.co.in";
+          Properties properties = System.getProperties();
+	      properties.setProperty("mail.smtp.host", host);
+	      properties.setProperty("mail.smtp.port", "25");
+	      
+	      Session session = Session.getInstance(properties);
+	      try{
+	        
+	         MimeMessage message = new MimeMessage(session);  
+	        
+	         message.setFrom(new InternetAddress(from));
+	     
+	         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+	        
+	         message.setSubject("Registration Success");
+	         
+	         String defaultText = "Hi "+username+",<br/></br><center><b><h1>Greetings From SCS !</h1></b></br><h2>Your Registraion is successfull.</br>Your default password: ";  
+	  
+	         message.setContent(defaultText+"<b>"+password+"</b></h2></center>","text/html");
+	         
+	         System.out.println("sending mail");
+	         Transport.send(message);
+	      
+	      }catch (MessagingException mex) {
+	    	  
+	         mex.printStackTrace();
+	         
+	      }
+		
+	}
+	
+
+	public String generatePassword()
+	{
+		    StringBuilder builder = new StringBuilder();
+		    char[] passwordBuffer = new char[8];
+		    Random generator = new Random();
+		    
+		    for (char ch = '0'; ch <= '9'; ++ch)
+		    	builder.append(ch);
+		    for (char ch = 'a'; ch <= 'z'; ++ch)
+		    	builder.append(ch);
+		    char[] symbols = builder.toString().toCharArray();
+		  
+		    for(int i=0;i<8;i++)
+		    {
+		    	passwordBuffer[i] = symbols[generator.nextInt(symbols.length)]; 
+		    }
+		
+		return new String(passwordBuffer);
+	}
+	
+}

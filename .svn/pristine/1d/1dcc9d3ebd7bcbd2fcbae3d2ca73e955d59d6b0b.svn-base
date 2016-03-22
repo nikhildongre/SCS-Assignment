@@ -1,0 +1,149 @@
+package com.scs.model;
+
+import java.util.List;
+import java.util.Collection;
+
+
+import org.bson.types.BSONTimestamp;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+/**
+ * This Pojo  represnt the User data 
+ * Authors : Nikhil
+ */
+
+@Document(collection="scs_user")
+public class User implements UserDetails{
+
+	  @Id
+	  String id ;
+	  String username;
+	  String password ;
+	  String email   ;
+	  boolean isActive ;
+	  String role  ;
+	  String createdBy ;
+	  BSONTimestamp createdDate   ;
+	  String modifiedBy  ;
+	  BSONTimestamp modifiedDate  ;
+	  List<ProjectsLinkedToUser> projectsLinkedToUser;
+	  
+	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	public User() {
+		super();
+	}
+	
+	
+	public User(String id, String username, String password, String email,
+			boolean isActive, String role , List<ProjectsLinkedToUser> projectsLinkedToUser) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.isActive = isActive;
+		this.role = role;
+		this.projectsLinkedToUser = projectsLinkedToUser;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	
+	public BSONTimestamp getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(BSONTimestamp createdDate) {
+		this.createdDate = createdDate;
+	}
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+	public BSONTimestamp getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(BSONTimestamp modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public List<ProjectsLinkedToUser> getProjectsLinkedToUser() {
+		return projectsLinkedToUser;
+	}
+	public void setProjectsLinkedToUser(
+			List<ProjectsLinkedToUser> projectsLinkedToUser) {
+		this.projectsLinkedToUser = projectsLinkedToUser;
+	}
+
+
+}

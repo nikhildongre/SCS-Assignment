@@ -1,0 +1,20 @@
+package com.scs.dao;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.scs.model.FileDocument;
+
+public interface FileDAO extends MongoRepository<FileDocument, String> {
+
+	public FileDocument findById(int id);
+
+	public List<FileDocument> findByPath(String path);
+
+	public FileDocument findByNameAndIsRootFolder(String fileName,
+			boolean isRoot);
+
+	public List<FileDocument> findByParentNodeId(String parentNodeId);
+
+}

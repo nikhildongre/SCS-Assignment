@@ -1,0 +1,179 @@
+.signleftbox {
+	width:219px;
+	height:auto;
+	float:left;
+	margin-bottom:5px;
+}
+.signleftbox h2 {
+	font-size:18px;
+	color:#535154;
+	margin:22px 10px 0 0;
+	text-align:right;
+	font-family: 'pt_sans_narrowregular';
+}
+.signleftbox h3 {
+	font-size:18px;
+	color:#535154;
+	margin:22px 10px 0 0;
+	text-align:right;
+	font-family: 'pt_sans_narrowregular';
+}
+.signleftbox h2:before {
+	content:    '* ';
+	padding:13px 0 0 14px;
+	color:#f76804;
+}
+.signrightbox {
+	width:221px;
+	height:auto;
+	float:left;
+	margin-bottom:5px;
+	position:relative;
+}
+.contact_form input, .contact_form select, .contact_form textarea {
+	height:32px;
+	width:220px;
+	padding:5px 8px;
+	margin-top:15px;
+}
+.contact_form input, .contact_form textarea, .contact_form select {
+	border:1px solid #d9d9d9;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	color:#747474;
+	box-shadow:none;
+}
+.confPW {
+	float:right;
+}
+.secretQ {
+	color: #535154;
+	font-size: 18px;
+	margin: 19px 10px 0 0;
+	text-align: right;
+}
+.signrightbox input[type="radio"] + label {
+	font-size:14px;
+	color:#6e6e6e;
+	font-weight:normal;
+	width: 83px;
+}
+.signleftbox {
+	width:219px;
+	height:auto;
+	float:left;
+	margin-bottom:5px;
+}
+.signleftbox h2 {
+	font-size:18px;
+	color:#535154;
+	margin:22px 10px 0 0;
+	text-align:right;
+	font-family: 'pt_sans_narrowregular';
+}
+.signleftbox h3 {
+	font-size:18px;
+	color:#535154;
+	margin:22px 10px 0 0;
+	text-align:right;
+	font-family: 'pt_sans_narrowregular';
+}
+.signleftbox h2:before {
+	content:    '* ';
+	padding:13px 0 0 14px;
+	color:#f76804;
+}
+.signrightbox {
+	width:221px;
+	height:auto;
+	float:left;
+	margin-bottom:5px;
+	position:relative;
+}
+.signleftbox {
+	width:219px;
+	height:auto;
+	float:left;
+	margin-bottom:5px;
+}
+.signleftbox h2 {
+	font-size:18px;
+	color:#535154;
+	margin:22px 10px 0 0;
+	text-align:right;
+	font-family: 'pt_sans_narrowregular';
+}
+.signleftbox h3 {
+	font-size:18px;
+	color:#535154;
+	margin:22px 10px 0 0;
+	text-align:right;
+	font-family: 'pt_sans_narrowregular';
+}
+.signleftbox h2:before {
+	content:    '* ';
+	padding:13px 0 0 14px;
+	color:#f76804;
+}
+.signrightbox {
+	width:221px;
+	height:auto;
+	float:left;
+	margin-bottom:5px;
+	position:relative;
+	padding-top:14px;
+}
+.formDetailsMainHead h1 {
+	color: #0395D9;
+	font-size: 22px;
+	margin: 0;
+	margin-left:65px;
+	line-height:35px;
+	border-bottom:solid 1px #C3A4A4;
+	font-family: 'pt_sans_narrowregular';
+}
+.formDetailsMainHead.RegisterNewConsumer {
+	height:35px;
+	background:url(../Images/icons/homeBlurb_sprite.png) no-repeat -136px -223px;
+	
+	}
+.radio-inline 
+{
+	padding-left: 24px;
+	padding-top: 7px;
+}
+.radio-inline span
+{
+	
+	font-size:15px;
+}
+.btn-primary {
+	background-color: #0395d9;
+	border-color: #0395d9;
+}
+.registerFormBtnMain {
+	margin:30px 0;
+}
+.registerBtn, .cancelBtn {
+	height:30px;
+	/*font-size:18px;*/
+	line-height:30px;
+	padding:0px 16px;
+}
+.registerBtn {
+	float:right;
+	margin-left:15px;
+	
+}
+.registerFormBtnMain {
+	margin:30px 0;
+}
+.cancelBtn {
+	float:left;
+	background:#5c5c5c;
+	border-color: #5c5c5c;
+}
+.cancelBtn:hover, .cancelBtn:focus, .cancelBtn:active {
+	background:#4b4b4b;
+	border-color: #4b4b4b;
+}

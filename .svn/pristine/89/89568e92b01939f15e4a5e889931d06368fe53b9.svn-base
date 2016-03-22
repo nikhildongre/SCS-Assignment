@@ -1,0 +1,82 @@
+package com.scs.model;
+
+import org.bson.types.BSONTimestamp;
+
+public class FileDocumentVersion {
+
+	 String versionNo;
+	 String revisionNo;
+	 String comments;
+	 String modifiedBy;
+	 String content;
+	 BSONTimestamp modifiedDate;
+	 String createdBy;
+	 BSONTimestamp createdDate;
+	 
+	public String getVersionNo() {
+		return versionNo;
+	}
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
+	}
+	public String getRevisionNo() {
+		return revisionNo;
+	}
+	public void setRevisionNo(String revisionNo) {
+		this.revisionNo = revisionNo;
+	}
+	public String getComments() {
+		return comments;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public BSONTimestamp getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(BSONTimestamp modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public BSONTimestamp getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(BSONTimestamp createdDate) {
+		this.createdDate = createdDate;
+	}
+	
+	public FileDocumentVersion() {
+		super();
+	}
+	 
+	public FileDocumentVersion(String versionNo, String revisionNo, String comments,
+			String modifiedBy, BSONTimestamp modifiedDate, String createdBy,
+			BSONTimestamp createdDate) {
+		super();
+		this.versionNo = versionNo;
+		this.revisionNo = revisionNo;
+		this.comments = comments;
+		this.modifiedBy = modifiedBy;
+		this.modifiedDate = modifiedDate;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+	}
+	 
+}

@@ -1,0 +1,12 @@
+package com.scs.dao;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.scs.model.UserProjects;
+
+
+public interface UserProjectDao extends MongoRepository<UserProjects, String> {
+
+	UserProjects findByProjectName(String projectName);
+
+}
